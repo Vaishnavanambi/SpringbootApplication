@@ -1,7 +1,7 @@
 package com.application.SpringbootApplication.Controllers;
 
-import com.application.SpringbootApplication.Services.UserDetailService;
-import com.application.SpringbootApplication.TransferObjects.UserDetailReq;
+import com.application.SpringbootApplication.Interfaces.UserDetailInterface;
+import com.application.SpringbootApplication.Data.UserDetailData;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 @CrossOrigin
 @RequiredArgsConstructor
 public class UserConfigController {
 
-    private final UserDetailService userDetailService;
+    private final UserDetailInterface userDetailInterface;
     @PutMapping("/register")
-    public ResponseEntity<String> registerUSer(@Valid @RequestBody UserDetailReq userDetailReq){
-        userDetailService.registerUser(userDetailReq);
+    public ResponseEntity<String> registerUSer(@Valid @RequestBody UserDetailData userDetailData){
+        userDetailInterface.registerUser(userDetailData);
 
         return new ResponseEntity<>("User Registered Successfully", HttpStatus.OK);
 

@@ -21,8 +21,14 @@ public class UserAuthDetailPO implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "name",nullable = false)
+    private String name;
+
     @Column(name = "user_Name", nullable = false)
     private String username;
+
+    @Column(name="email",nullable = false)
+    private String email;
 
     @Column(name = "password", nullable = false)
     private String password;
